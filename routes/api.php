@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['middleware'=>'api'],function (){
+
+    // API USERS
+    Route::controller(UsersController::class)->group(function (){
+        Route::get('get-users','index');
+        Route::post('get-user-byid','getUserById');
+        Route::post('create-user','createUser');
+        Route::post('change-user-status','changeStatus');
+        Route::post('change-user-password','changePassword');
+    });
+});
