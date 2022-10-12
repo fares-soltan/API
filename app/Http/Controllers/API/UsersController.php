@@ -41,4 +41,9 @@ class UsersController extends Controller
 
     }
 
+    public function changePassword(Request $request)
+    {
+        Users::where('id','=',$request-> id) -> update(['password' => $request-> user_password]);
+        return $this->returnSuccessMessage('changed Password...!');
+    }
 }
