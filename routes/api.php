@@ -24,5 +24,6 @@ Route::group(['middleware'=>['api','checkPassword']],function (){
         Route::post('/find/{id}','getUserById');
         Route::post('/create','createUser');
         Route::post('/change-password','changePassword');
+        Route::post('/login','login');
     });
 });
