@@ -23,4 +23,22 @@ class UsersController extends Controller
         }
         return response() ->json($Users);
     }
+    public function createUser(Request $request)
+    {
+        $Create = Users::create([
+            'name' =>$request->name,
+            'email' =>$request->email,
+            'user_phone' =>$request->user_phone,
+            'user_add' =>$request->user_add,
+            'password' =>$request->password,
+
+        ]);
+        if(!$Create){
+            return $this->returnError(400,"Bad Request..");
+        }
+        return response() ->json($Create);
+
+
+    }
+
 }
