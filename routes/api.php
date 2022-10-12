@@ -19,10 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware'=>'api'],function (){
 
     // API USERS
-    Route::controller(UsersController::class)->group(function (){
-        Route::get('users','index');
-        Route::get('users/{id}','getUserById');
-        Route::post('create-user','createUser');
-        Route::post('change-user-password','changePassword');
+    Route::controller(UsersController::class)->prefix('users')->group(function (){
+        Route::get('/','index');
+        Route::get('/{id}','getUserById');
+        Route::post('/create','createUser');
+        Route::post('/change-password','changePassword');
     });
 });
