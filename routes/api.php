@@ -21,7 +21,7 @@ Route::group(['middleware'=>['api','checkPassword']],function (){
     // API USERS
     Route::controller(UsersController::class)->prefix('users')->group(function (){
         Route::post('/','index');
-        Route::get('/{id}','getUserById');
+        Route::post('/find/{id}','getUserById');
         Route::post('/create','createUser');
         Route::post('/change-password','changePassword');
     });
