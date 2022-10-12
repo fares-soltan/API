@@ -15,4 +15,12 @@ class UsersController extends Controller
 
         return response() ->json($Users);
     }
+    public function getUserById($id)
+    {
+        $Users = Users::find($id);
+        if(!$Users){
+            return "this user not found";
+        }
+        return response() ->json($Users);
+    }
 }
