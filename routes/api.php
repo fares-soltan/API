@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['middleware'=>'api'],function (){
+Route::group(['middleware'=>['api','checkPassword']],function (){
 
     // API USERS
     Route::controller(UsersController::class)->prefix('users')->group(function (){
-        Route::get('/','index');
+        Route::post('/','index');
         Route::get('/{id}','getUserById');
         Route::post('/create','createUser');
         Route::post('/change-password','changePassword');
