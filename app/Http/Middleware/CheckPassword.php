@@ -2,22 +2,18 @@
 
 namespace App\Http\Middleware;
 
+use App\Traits\GeneralTrait;
 use Closure;
 use Illuminate\Http\Request;
 
 class CheckPassword
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
-     */
+    use GeneralTrait;
+
     public function handle(Request $request, Closure $next)
     {
         if($request->api_password != env('API_PASSWORD','OuvMzoJBZtV16sO26o')){
-            return response()->json(["message"=> ' Unauthenticated.']);
+            return $this->returnError('401','Unauthenticated');
         }
         return $next($request);
     }
